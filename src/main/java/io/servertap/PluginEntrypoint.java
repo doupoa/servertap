@@ -236,7 +236,6 @@ public class PluginEntrypoint extends JavaPlugin {
 
         // Put the original class loader back where it was.
         Thread.currentThread().setContextClassLoader(classLoader);
-
         getServer().getPluginManager().registerEvents(new WebhookEventListener(this), this);
 
         log.info("-----------------------------");
@@ -281,11 +280,13 @@ public class PluginEntrypoint extends JavaPlugin {
                 .title(this.getDescription().getName())
                 .version(this.getDescription().getVersion())
                 .description(this.getDescription().getDescription());
+        SwaggerOptions opts = new SwaggerOptions("/swagger");
+
         return new OpenApiOptions(applicationInfo)
                 .path("/swagger-docs")
                 .includePath(Constants.API_V1 + "/*")
                 .activateAnnotationScanningFor("io.servertap.api.v1")
-                .swagger(new SwaggerOptions("/swagger"));
+                .swagger(opts);
     }
 
 }
