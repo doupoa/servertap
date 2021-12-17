@@ -66,6 +66,7 @@
             <artifactId>VaultAPI</artifactId>
             <version>1.7</version>
         </dependency>
+
         <!-- NBT API integration -->
         <dependency>
             <groupId>de.tr7zw</groupId>

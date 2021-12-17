@@ -9,6 +9,7 @@ import io.servertap.api.v1.models.ConsoleLine;
 import io.servertap.api.v1.websockets.ConsoleListener;
 import io.servertap.api.v1.websockets.WebsocketHandler;
 import io.servertap.metrics.Metrics;
+import io.servertap.utils.AuthHandler;
 import io.servertap.utils.GsonJsonMapper;
 import io.swagger.v3.oas.models.info.Info;
 import net.milkbowl.vault.economy.Economy;
@@ -237,6 +238,10 @@ public class PluginEntrypoint extends JavaPlugin {
         Thread.currentThread().setContextClassLoader(classLoader);
 
         getServer().getPluginManager().registerEvents(new WebhookEventListener(this), this);
+
+        log.info("-----------------------------");
+        log.info(String.join(",", bukkitConfig.getKeys(false)));
+        AuthHandler a = new AuthHandler(bukkitConfig.getConfigurationSection("auth"));
     }
 
     private static SslContextFactory getSslContextFactory(String keystorePath, String keystorePassword) {
