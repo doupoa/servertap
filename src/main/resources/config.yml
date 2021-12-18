@@ -31,18 +31,3 @@ corsOrigins:
 # Number of console log lines to send when websocket connections are opened
 # Set to 0 to effectively disable this
 websocketConsoleBuffer: 1000
-
-auth:
-  static:
-    - name: my-key
-      key: 123abc
-      allow:
-        - "/*"
-      deny:
-        - "/v1/console"
-    - name: my-second-key
-      key: 123abc
-      allow:
-        - "/*"
-      deny:
-        - "/v1/console"
