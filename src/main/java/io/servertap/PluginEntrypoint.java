@@ -237,10 +237,6 @@ public class PluginEntrypoint extends JavaPlugin {
         // Put the original class loader back where it was.
         Thread.currentThread().setContextClassLoader(classLoader);
         getServer().getPluginManager().registerEvents(new WebhookEventListener(this), this);
-
-        log.info("-----------------------------");
-        log.info(String.join(",", bukkitConfig.getKeys(false)));
-        AuthHandler a = new AuthHandler(bukkitConfig.getConfigurationSection("auth"));
     }
 
     private static SslContextFactory getSslContextFactory(String keystorePath, String keystorePassword) {
